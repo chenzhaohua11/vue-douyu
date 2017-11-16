@@ -59,6 +59,10 @@ export default {
           this.showLoad = false
         }, 2000)
       })
+      .catch(err => {
+        this.error = true
+        this.showLoad = false
+      })
     },
     loadMore () {
       this.page++

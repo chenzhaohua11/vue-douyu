@@ -13,20 +13,19 @@ export default {
   },
   methods: {
     backTop () {
-      let top = document.body.scrollTop
-      let speed = 50
       let timer = setInterval(() => {
-        document.body.scrollTop = top -= speed
-        if (top <= 0) {
-          top = 0
+        var top = document.documentElement.scrollTop || document.body.scrollTop
+        var ispeed = 50
+        if (top === 0) {
           clearInterval(timer)
         }
+        document.documentElement.scrollTop = document.body.scrollTop = top - ispeed
       }, 30)
     }
   },
   mounted () {
     window.onscroll = () => {
-      let top = document.body.scrollTop
+      let top = document.documentElement.scrollTop || document.body.scrollTop
       this.scroll = top > 300
     }
   }

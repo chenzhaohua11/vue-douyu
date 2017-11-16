@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <transition name="side">
-      <side-menu v-show="show" @hide="hideSide"></side-menu>
+    <side-menu v-show="show" @hide="hideSide"></side-menu>
     </transition>
     <router-view/>
   </div>
@@ -16,10 +15,10 @@ export default {
     SideMenu
   },
   created () {
-    this.$http.get(`/douyuapi/RoomApi/live?offset=1&limit=20`)
-    .then(res => {
-      console.log(res.data.data)
-    })
+    // this.$http.get('/douyuapi/RoomApi/live?offset=1&limit-20')
+    // .then(res => {
+    //   console.log(res.data.data)
+    // })
   },
   data () {
     return {
@@ -41,27 +40,23 @@ export default {
 </script>
 
 <style>
-  .side-enter-active,.side-leave-active,
-  .side-enter-active ul,.side-leave-active ul{
-    transition:all .4s linear;
-  }
-  .side-enter,.side-leave-active{
-    opacity: 0;
-  }
-  .side-enter ul,.side-leave-active ul{
-    transform:translateX(-50%);
-    opacity:0;
-  }
-
-  .load-more {
-    margin: 10px;
-    text-align: center;
-  }
-  .load-more span {
-    display: inline-block;
-    line-height: 30px;
-    padding: 0 20px;
-    border-radius: 10px;
-    border: 1px solid #000;
-  }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.side-enter-active,.side-leave-active,
+ .side-enter-active ul,.side-leave-active ul{
+   transition:all .4s linear;
+ }
+ .side-enter,.side-leave-active{
+   opacity: 0;
+ }
+ .side-enter ul,.side-leave-active ul{
+   transform:translateX(-50%);
+   opacity:0;
+ }
 </style>
